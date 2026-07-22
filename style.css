@@ -237,16 +237,17 @@ h2 {
 
 .hero__table {
   display: block;
-  width: 100%;
+  width: 130%;
   max-width: none;
-  margin: clamp(16px, 5vw, 32px) auto 0;
+  /* margin: clamp(48px, 12vw, 88px) 0 0; */
+  margin-inline: -15%; /* (120% - 100%) / 2 — расширение от центра */
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(20%) sepia(16%) saturate(743%)
-    hue-rotate(74deg) brightness(92%) contrast(88%);
+  /* filter: brightness(0) saturate(100%) invert(20%) sepia(16%) saturate(743%)
+    hue-rotate(74deg) brightness(92%) contrast(88%); */
 }
 
 .hero__date {
-  margin: clamp(10px, 5vw, 24px) auto 0;
+  margin: clamp(36px, 9vw, 64px) auto 0;
   color: var(--green);
   font-family: "BarokkoScript", "Times New Roman", cursive;
   font-size: clamp(2.8rem, 10vw, 4.7rem);
@@ -386,6 +387,7 @@ h2 {
   max-width: 100%;
   margin: clamp(48px, 5vw, 78px) 0 0;
   padding: 0.28em 0;
+  margin-top: 0;
   overflow-x: hidden;
   overflow-y: visible;
   color: rgba(49, 67, 49, 0.28);
@@ -1154,7 +1156,7 @@ h2 {
   }
 
   .hero__date {
-    margin-top: 28px;
+    margin-top: 44px;
     font-size: clamp(2.2rem, 11vw, 3.2rem);
   }
 
@@ -1281,7 +1283,7 @@ h2 {
   }
 
   .hero__date {
-    margin-top: 18px;
+    margin-top: 36px;
   }
 
   .hero__count-label {
