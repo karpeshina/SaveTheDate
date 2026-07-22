@@ -170,31 +170,64 @@ if (dressPair && dressSection) {
   }
 }
 
-form?.addEventListener("submit", (event) => {
+form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  const submitButton = form.querySelector(".form__submit");
   const data = new FormData(form);
   const drinks = data.getAll("drinks");
   const guestName = String(data.get("guestName") || "").trim();
   const attendance = data.get("attendance");
 
-  const answer = {
-    guestName,
-    attendance,
-    drinks,
-    sentAt: new Date().toISOString(),
-  };
+  if (!guestName || !attendance) {
+    return;
+  }
 
-  const savedAnswers = JSON.parse(localStorage.getItem("weddingRsvpAnswers") || "[]");
-  savedAnswers.push(answer);
-  localStorage.setItem("weddingRsvpAnswers", JSON.stringify(savedAnswers));
+  // FormSubmit лучше принимает напитки одной строкой
+  data.delete("drinks");
+  data.set("drinks", drinks.length ? drinks.join(", ") : "Не выбрано");
+  data.set("guestName", guestName);
 
-  const success = document.createElement("h3");
-  success.className = "form__success";
-  success.setAttribute("role", "status");
-  success.setAttribute("aria-live", "polite");
-  success.textContent = "Форма отправлена";
+  submitButton?.setAttribute("disabled", "true");
+  if (submitButton) {
+    submitButton.textContent = "Отправляем…";
+  }
 
-  form.classList.add("form--sent");
-  form.replaceChildren(success);
+  try {
+    const response = await fetch("https://formsubmit.co/ajax/torpshn@yandex.ru", {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Submit failed");
+    }
+
+    const success = document.createElement("h3");
+    success.className = "form__success";
+    success.setAttribute("role", "status");
+    success.setAttribute("aria-live", "polite");
+    success.textContent = "Форма отправлена";
+
+    form.classList.add("form--sent");
+    form.replaceChildren(success);
+  } catch (error) {
+    submitButton?.removeAttribute("disabled");
+    if (submitButton) {
+      submitButton.textContent = "Отправить";
+    }
+
+    let errorNode = form.querySelector(".form__error");
+    if (!errorNode) {
+      errorNode = document.createElement("p");
+      errorNode.className = "form__error";
+      errorNode.setAttribute("role", "alert");
+      form.appendChild(errorNode);
+    }
+    errorNode.textContent =
+      "Не удалось отправить. Попробуйте ещё раз через минуту.";
+  }
 });

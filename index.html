@@ -52,7 +52,7 @@
             Мы очень ждем день нашей свадьбы и хотим провести его рядом с
             людьми, которые дороги нам по-настоящему. Приглашаем вас стать
             частью этого теплого праздника, разделить с нами радость,
-            волнение и первые минуты нашей семейной истории.
+            волнение и первые минуты нашей семейной истории
           </p>
           <img class="hero__cupid" src="./assets/hero-cupid.png" alt="" aria-hidden="true" />
           <!-- <img class="invite__chandelier" src="./assets/borokko/iconizer-4-02.svg" alt="" aria-hidden="true" /> -->
@@ -122,7 +122,7 @@
                 <div class="timeline__body">
                   <h3>Церемония</h3>
                   <time datetime="16:00">16:00</time>
-                  <p>обмен клятвами</p>
+                  <p>долгожданный момент</p>
                 </div>
               </li>
               <li>
@@ -200,7 +200,7 @@
             </div> -->
             <p>
               Если вам захочется сделать нам приятный комплимент, вместо букета мы будем рады вашей любимой книге с подписью и теплыми пожеланиями на первой странице. 
-              Такой подарок останется с нами на долгие годы.
+              Такой подарок останется с нами на долгие годы
             </p>
           </article>
           <article class="wish-article wish-article--art">
@@ -210,7 +210,7 @@
             <div class="wish-text">
               <p>
                 Самым ценным подарком для нас станет ваш вклад в бюджет нашей
-                молодой семьи и будущих общих планов.
+                молодой семьи и будущих общих планов
               </p>
               <div class="wishes__arts" aria-hidden="true">
                 <img
@@ -234,9 +234,9 @@
             </a>
           </div>
           <p>
-            По всем организационным вопросам можно обратиться к нашей
+            По всем организационным вопросам можно обратиться к нашему
             организатору Ладе. Она с радостью подскажет детали и поможет
-            сориентироваться.
+            сориентироваться
           </p>
           <div class="button-row">
             <a class="button" href="https://t.me/LadaKulikova" target="_blank" rel="noreferrer">
@@ -263,7 +263,17 @@
               alt=""
               aria-hidden="true"
             />
-          <form class="form" id="guestForm">
+          <form
+            class="form"
+            id="guestForm"
+            action="https://formsubmit.co/torpshn@yandex.ru"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="ОС Свадьба" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+
             <label class="form-field">
               <span>Ваше имя и фамилия</span>
               <input type="text" name="guestName" required />
@@ -279,10 +289,6 @@
                 <input type="radio" name="attendance" value="К сожалению, не смогу" />
                 <span>К сожалению, не смогу</span>
               </label>
-              <label>
-                <input type="radio" name="attendance" value="Отвечу позже" />
-                <span>Отвечу позже</span>
-              </label>
             </fieldset>
 
             <fieldset class="form-choice">
@@ -293,15 +299,15 @@
               <div class="checkbox-list">
                 <label>
                   <input type="checkbox" name="drinks" value="Вино белое полусладкое" />
-                  <span>Вино белое полусладкое</span>
+                  <span>Вино белое</span>
                 </label>
                 <label>
                   <input type="checkbox" name="drinks" value="Вино красное полусладкое" />
-                  <span>Вино красное полусладкое</span>
+                  <span>Вино красное</span>
                 </label>
                 <label>
                   <input type="checkbox" name="drinks" value="Шампанское" />
-                  <span>Шампанское</span>
+                  <span>Игристое вино</span>
                 </label>
                 <label>
                   <input type="checkbox" name="drinks" value="Водка" />
@@ -310,10 +316,6 @@
                 <label>
                   <input type="checkbox" name="drinks" value="Виски" />
                   <span>Виски</span>
-                </label>
-                <label>
-                  <input type="checkbox" name="drinks" value="Коньяк" />
-                  <span>Коньяк</span>
                 </label>
               </div>
             </fieldset>
