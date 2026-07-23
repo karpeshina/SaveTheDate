@@ -785,32 +785,50 @@ h2 {
 }
 
 .palette {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-  gap: clamp(10px, 3vw, 22px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  justify-items: center;
+  gap: clamp(14px, 3.5vw, 22px) clamp(8px, 2vw, 16px);
   margin-top: 36px;
 }
 
 .palette__glass {
   position: relative;
+  display: grid;
+  width: 100%;
+  max-width: 72px;
+  justify-items: center;
+}
+
+.palette__glass::after {
+  content: attr(title);
   display: block;
-  width: clamp(48px, 12vw, 64px);
+  max-width: 100%;
+  margin-top: 8px;
+  color: var(--green-soft);
+  font-family: "GoldType", "Times New Roman", serif;
+  font-size: clamp(0.54rem, 2.2vw, 0.68rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .palette__glass img {
   position: relative;
   z-index: 1;
   display: block;
-  width: 100%;
+  grid-area: 1 / 1;
+  width: clamp(36px, 9vw, 48px);
   height: auto;
 }
 
 .palette__wine {
-  position: absolute;
-  inset: 0;
   z-index: 0;
+  grid-area: 1 / 1;
+  width: clamp(36px, 9vw, 48px);
+  height: 100%;
   background: var(--color);
   -webkit-mask-image: url("./assets/dress-glass-fill.png");
   mask-image: url("./assets/dress-glass-fill.png");
@@ -1152,6 +1170,10 @@ h2 {
   .page-shell {
     width: min(100%, 430px);
     padding: 0 clamp(18px, 5vw, 24px) 120px;
+  }
+
+  .palette {
+    gap: 14px 8px;
   }
 
   .hero {
